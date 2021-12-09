@@ -1,0 +1,23 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.item1 { grid-area: categorias;}
+.item2 { grid-area: post; }
+
+.Container {
+  width: 100%;
+}
+
+.Container__Categorias {
+	width: 100%;
+	display: grid;
+	grid-template-areas:
+	'categorias post post post post post post'
+	;
+}
+
+.Container__post {
+	background-color: #000000;
+}
