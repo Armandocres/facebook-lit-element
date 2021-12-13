@@ -1,6 +1,11 @@
 *{
 	margin: 0;
 	padding: 0;
+	background-color: #000000;
+}
+
+h1 {
+	color: #3B5998;
 }
 
 .item1 { grid-area: categorias;}

@@ -1,12 +1,17 @@
 import { LitElement, html } from 'lit-element';
+import { GeneratePOst } from '../utils/generatePost';
 import { styles } from '../styles/my-thinking';
+
+import './my-post'
 
 export class MyThinking extends LitElement {
 
   static get properties(){
     return {
-      img: {typeof: String},
-      quien: {typeof: String}
+      img: {type: String},
+      quien: { type: String },
+      titulo: { type: String },
+      response:{type: Object}
     }
   }
 
@@ -18,25 +23,28 @@ export class MyThinking extends LitElement {
 
   constructor() {
     super();
-    this.img = '';
+    this.img = 'https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295429__340.png';
     this.quien = '';
+    this.titulo = '';
+    this.response = {};
+    this.postPosts = new GeneratePOst();
   }
 
   render() {
     return html`
     <div class='ContainerThink'>
-        ${this.getIMage(this.img)}
+        ${this.getIMage()}
         ${this.getForm(this.quien)}
-      </div>
+    </div>
+    <div class="ContainerPost">
+      ${this.getPosts()}
+    </div>
     `;
   }
 
-  getIMage(img) {
-    if (!img) {
-      return html``
-    }
+  getIMage() {
     return html`
-      <img .src='${img}' alt='imagen' class='ContainerThink__img'/>
+      <img .src='${this.img}' alt='imagen' class='ContainerThink__img'/>
     `
   }
 
@@ -45,7 +53,7 @@ export class MyThinking extends LitElement {
       return html``;
     }
     return html`
-      <form>
+      <form @submit=${this.postData}>
         <label>
           <input
             placeholder="¿Qué estás pensando, ${this.quien}?"
@@ -54,6 +62,26 @@ export class MyThinking extends LitElement {
           >
         </label>
       </form>
+    `;
+  }
+
+  postData(e) {
+    e.preventDefault()
+    let hoy = new Date();
+    this.titulo = e.target['think'].value;
+    let hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+    this.postPosts.postData(this.titulo, hora, this.img, hoy)
+    this.postPosts.addEventListener('Posts', (data) => {
+      this.response = data.detail.data;
+    })
+  }
+
+  getPosts() {
+    if (!this.response) {
+      return html``;
+    }
+    return html`
+      <my-post title="${this.response.titulo}" hour="${this.response.hour}" img="${this.img}" ></my-post>
     `;
   }
 }

@@ -8,6 +8,7 @@ const styles = css`
     align-items: center;
     background-color: #000000;
     color: white;
+    margin-left: 85px;
   }
 
   .ContainerPost__img {

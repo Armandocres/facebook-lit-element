@@ -8,8 +8,8 @@ const styles = css`
 
   .ContainerThink {
     display: flex;
+    margin-left: 30%;
     background-color: #000000;
-    justify-content: center;
     align-items: center;
     gap: 10px;
     height: 90px;
@@ -29,6 +29,7 @@ const styles = css`
   .ContainerThink__img {
     width: 37px;
   }
+
 `;
 
 export {styles}
