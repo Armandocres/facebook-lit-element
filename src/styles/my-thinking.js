@@ -8,8 +8,8 @@ const styles = css`
 
   .ContainerThink {
     display: flex;
+    margin-left: 30%;
     background-color: #000000;
-    justify-content: center;
     align-items: center;
     gap: 10px;
     height: 90px;
@@ -30,9 +30,6 @@ const styles = css`
     width: 37px;
   }
 
-  .ContainerPost {
-    margin-left: 258px;
-  }
 `;
 
 export {styles}
