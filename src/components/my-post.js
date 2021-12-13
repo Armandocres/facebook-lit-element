@@ -56,6 +56,9 @@ export class MyPost extends LitElement {
     `;
   }
 
+  //componente pagina
+  //componente para tener multiples post
+
   getApiData() {
     this.generateGet.getDataApi()
     this.generateGet.addEventListener('CallGet', (data) => {

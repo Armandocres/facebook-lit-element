@@ -29,29 +29,30 @@ export class GeneratePOst extends LitElement {
   }
 
   postData(titulo, hour, img, id) {
-    fetch(this.url, {
-      method: 'POST',
-      body: JSON.stringify({
-        titulo,
-        hour,
-        img,
-        id
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-    .then((response) => {
-      return response.json()
-    })
-    .then((data) => {
-      this._sendData(data)
-    })
-    .catch((error) => {
+    try {
+      fetch(this.url, {
+        method: 'POST',
+        body: JSON.stringify({
+          titulo,
+          hour,
+          img,
+          id
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        this._sendData(data)
+      })
+    } catch (error) {
       this.dispatchEvent(new CustomEvent('ERROR', {
       detail: {error}
     }))
-  })
+  }
   }
 }
 customElements.define('my-generatepost', GeneratePOst);
