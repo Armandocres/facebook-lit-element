@@ -62,9 +62,9 @@ export class MyCategories extends LitElement {
     }
 
     return html`
-     <div>
+    <div>
         <p>${this.text}</p>
-      </div>
+    </div>
     `
   }
 }

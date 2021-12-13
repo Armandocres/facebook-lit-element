@@ -1,0 +1,19 @@
+{
+  "posts": [
+    {
+      "titulo": "Lo que callamos los godinez",
+      "imagen": "https://lh3.googleusercontent.com/ogw/ADea4I61LqrstePDva_b5D05D9wI_VcT0FfE2ieZr7OMQw=s83-c-mo",
+      "hour": "3:15"
+    },
+    {
+      "titulo": "Spoliers de Spider-man",
+      "imagen": "https://lh3.googleusercontent.com/ogw/ADea4I61LqrstePDva_b5D05D9wI_VcT0FfE2ieZr7OMQw=s83-c-mo",
+      "hour": "3:15"
+    },
+    {
+      "titulo": "Atlas es el campeón",
+      "imagen": "https://lh3.googleusercontent.com/ogw/ADea4I61LqrstePDva_b5D05D9wI_VcT0FfE2ieZr7OMQw=s83-c-mo",
+      "hour": "3:15"
+    }
+  ]
+}

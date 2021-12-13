@@ -29,6 +29,10 @@ const styles = css`
   .ContainerThink__img {
     width: 37px;
   }
+
+  .ContainerPost {
+    margin-left: 258px;
+  }
 `;
 
 export {styles}

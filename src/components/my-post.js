@@ -7,7 +7,6 @@ export class MyPost extends LitElement {
     return {
       title: {typeof: String},
       img: {typeof: String},
-      body: {typeof: String},
       hour: {typeof: Number}
     }
   }
@@ -16,6 +15,13 @@ export class MyPost extends LitElement {
     return [
       styles
     ]
+  }
+
+  constructor() {
+    super();
+    this.img = 'https://accounts.google.com/SignOutOptions?hl=es&continue=https://www.google.com%3Fhl%3Des';
+    this.hour = 0;
+    this.title = '';
   }
 
   render() {
@@ -38,5 +44,6 @@ export class MyPost extends LitElement {
       </div>
     `;
   }
+
 }
 customElements.define('my-post', MyPost);

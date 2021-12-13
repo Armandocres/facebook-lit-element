@@ -1,6 +1,7 @@
 *{
 	margin: 0;
 	padding: 0;
+	background-color: #000000;
 }
 
 .item1 { grid-area: categorias;}
