@@ -28,7 +28,7 @@ export class GeneratePOst extends LitElement {
     }
   }
 
-  postData(titulo, hour, id, img) {
+  postData(titulo, hour, img, id) {
     fetch(this.url, {
       method: 'POST',
       body: JSON.stringify({

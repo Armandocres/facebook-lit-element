@@ -9,8 +9,7 @@ export class MyPost extends LitElement {
       title: {type: String},
       img: {type: String},
       hour: {typeof: Number},
-      response: {type: Array},
-      Author: {type: String}
+      response: {type: Array}
     }
   }
 
