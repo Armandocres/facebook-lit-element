@@ -42,17 +42,16 @@ export class MyPost extends LitElement {
   }
 
   getHeader(title, img, hour) {
-    if (!title) {
-      return html``;
-    }
     return html`
+      ${title && img && hour ? html`
       <div class="ContainerPost">
         <img src='${img}' alt="imagen de perfil" class="ContainerPost__img">
-        <div>
-          <p>${title}</p>
-          <span>${hour}</span>
-        </div>
+      <div>
+        <p>${title}</p>
+        <span>${hour}</span>
       </div>
+    </div>
+      ` : html``}
     `;
   }
 
@@ -61,7 +60,7 @@ export class MyPost extends LitElement {
 
   getApiData() {
     this.generateGet.getDataApi()
-    this.generateGet.addEventListener('CallGet', (data) => {
+    this.generateGet.addEventListener('my-get', (data) => {
       this.response = data.detail.data;
     })
   }

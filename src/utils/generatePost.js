@@ -14,20 +14,22 @@ export class GeneratePOst extends LitElement {
     this.url = 'http://localhost:3000/posts'
   }
 
+  //Trae la data de la petición y la propaga por el CustomEvent
   _sendData(data) {
     try {
-      this.dispatchEvent(new CustomEvent('Posts', {
+      this.dispatchEvent(new CustomEvent('my-post', {
         detail: { data },
         bubbles: true,
         composed: true
       }))
     } catch (error) {
-      this.dispatchEvent(new CustomEvent('ERROR-CATCH', {
+      this.dispatchEvent(new CustomEvent('error-catch', {
         detail: {error}
       }))
     }
   }
 
+  // peticion que espera un objeto con un titulo, hour, img, id
   postData(titulo, hour, img, id) {
     try {
       fetch(this.url, {
@@ -45,11 +47,12 @@ export class GeneratePOst extends LitElement {
       .then((response) => {
         return response.json()
       })
+        //manda la data a sendData
       .then((data) => {
         this._sendData(data)
       })
     } catch (error) {
-      this.dispatchEvent(new CustomEvent('ERROR', {
+      this.dispatchEvent(new CustomEvent('error', {
       detail: {error}
     }))
   }

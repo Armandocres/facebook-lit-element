@@ -49,20 +49,19 @@ export class MyThinking extends LitElement {
   }
 
   getForm(quien) {
-    if(!quien) {
-      return html``;
-    }
     return html`
+      ${quien ? html`
       <form @submit=${this.postData}>
         <label>
-          <input
-            placeholder="¿Qué estás pensando, ${this.quien}?"
-            id="think"
-            class="ContainerThink--input"
-          >
-        </label>
-      </form>
-    `;
+        <input
+          placeholder="¿Qué estás pensando, ${this.quien}?"
+          id="think"
+          class="ContainerThink--input"
+        >
+      </label>
+    </form>
+      ` : html``}
+    `
   }
 
   postData(e) {
@@ -71,18 +70,17 @@ export class MyThinking extends LitElement {
     this.titulo = e.target['think'].value;
     let hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
     this.postPosts.postData(this.titulo, hora, this.img, hoy)
-    this.postPosts.addEventListener('Posts', (data) => {
+    this.postPosts.addEventListener('my-post', (data) => {
       this.response = data.detail.data;
     })
   }
 
   getPosts() {
-    if (!this.response) {
-      return html``;
-    }
     return html`
-      <my-post title="${this.response.titulo}" hour="${this.response.hour}" img="${this.img}" ></my-post>
-    `;
+      ${this.response ? html`
+        <my-post title="${this.response.titulo}" hour="${this.response.hour}" img="${this.img}" ></my-post>
+      ` : html``}
+    `
   }
 }
 customElements.define('my-thinking', MyThinking);

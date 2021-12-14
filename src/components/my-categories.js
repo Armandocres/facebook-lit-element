@@ -35,37 +35,26 @@ export class MyCategories extends LitElement {
   }
 
   getIMage(img) {
-    if (!img) {
-      return html``
-    }
     return html`
-      <img .src='${img}' alt='imagen' class='ContainerCategories__img'/>
-    `
+      ${img ? html`<img .src='${img}' alt='imagen' class='ContainerCategories__img'/>` : html``}
+    `;
   }
 
   getIcon(icon) {
-    if (!icon) {
-      return html``;
-    }
     return html`
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined">
-
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined">
+      ${icon ? html`
         <span class='material-icons-outlined ContainerCategories__icons'>
           <span>${icon}</span>
         </span>
-      `
+      ` : html``}
+    `;
   }
 
   getTex(text) {
-    if(!text) {
-      return html``;
-    }
-
     return html`
-    <div>
-        <p>${this.text}</p>
-    </div>
-    `
+      ${ text ? html`<div><p>${text}</p></div>` : html`` }
+    `;
   }
 }
 
