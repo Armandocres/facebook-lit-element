@@ -11,7 +11,8 @@ export class MyThinking extends LitElement {
       img: {type: String},
       quien: { type: String },
       titulo: { type: String },
-      response:{type: Object}
+      response:{type: Object},
+      proposito: {type: String}
     }
   }
 
@@ -27,6 +28,7 @@ export class MyThinking extends LitElement {
     this.quien = '';
     this.titulo = '';
     this.response = {};
+    this.proposito = '';
     this.postPosts = new GeneratePOst();
   }
 
@@ -54,7 +56,7 @@ export class MyThinking extends LitElement {
       <form @submit=${this.postData}>
         <label>
         <input
-          placeholder="¿Qué estás pensando, ${this.quien}?"
+          placeholder="¿${this.proposito}, ${this.quien}?"
           id="think"
           class="ContainerThink--input"
         >

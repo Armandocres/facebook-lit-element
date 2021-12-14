@@ -38,12 +38,16 @@ export class GenerateGEt extends LitElement {
         //manda la data a sendData
         this._sendData(data)
         })
+        .catch((error) => {
+          this.dispatchEvent(new CustomEvent('error-promise', {
+            detail: {error}
+          }))
+        })
     } catch (error) {
-      this.dispatchEvent(new CustomEvent('error', {
+      this.dispatchEvent(new CustomEvent('error-catch', {
       detail: {error}
     }))
     }
   }
-
 }
 customElements.define('my-generateget', GenerateGEt);

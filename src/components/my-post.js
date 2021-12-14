@@ -2,6 +2,8 @@ import { LitElement, html } from 'lit-element';
 import { GenerateGEt } from '../utils/generateGet';
 import { styles } from '../styles/my-post';
 
+import '../page/page-posts';
+
 export class MyPost extends LitElement {
 
   static get properties() {
@@ -41,21 +43,6 @@ export class MyPost extends LitElement {
     `;
   }
 
-  getHeader(title, img, hour) {
-    return html`
-      ${title && img && hour ? html`
-      <div class="ContainerPost">
-        <img src='${img}' alt="imagen de perfil" class="ContainerPost__img">
-      <div>
-        <p>${title}</p>
-        <span>${hour}</span>
-      </div>
-    </div>
-      ` : html``}
-    `;
-  }
-
-  //componente pagina
   //componente para tener multiples post
 
   getApiData() {
@@ -65,16 +52,18 @@ export class MyPost extends LitElement {
     })
   }
 
+  getHeader(title, img, hour) {
+    return html`
+      ${title && img && hour ? html`
+        <page-posts titulo="${title}" image="${this.img}" hour="${hour}"></page-posts>
+      ` : html``}
+    `;
+  }
+
   dataTemplate() {
     return html`
       ${this.response.map(item => html`
-      <div class="ContainerPost">
-        <img src='${this.img}' alt="imagen de perfil" class="ContainerPost__img">
-        <div>
-          <p>${item.titulo}</p>
-          <span>${item.hour}</span>
-        </div>
-      </div>
+        <page-posts titulo="${item.titulo}" image="${this.img}" hour="${item.hour}"></page-posts>
       `)}
     `
   }

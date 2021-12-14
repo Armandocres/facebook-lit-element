@@ -51,8 +51,13 @@ export class GeneratePOst extends LitElement {
       .then((data) => {
         this._sendData(data)
       })
+      .catch((error) => {
+        this.dispatchEvent(new CustomEvent('error-promise', {
+          detail: {error}
+        }))
+      })
     } catch (error) {
-      this.dispatchEvent(new CustomEvent('error', {
+      this.dispatchEvent(new CustomEvent('error-catch', {
       detail: {error}
     }))
   }
