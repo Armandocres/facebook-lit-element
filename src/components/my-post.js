@@ -11,7 +11,7 @@ export class MyPost extends LitElement {
       title: {type: String},
       img: {type: String},
       hour: {typeof: Number},
-      response: {type: Array}
+      post: {type: Array}
     }
   }
 
@@ -26,12 +26,8 @@ export class MyPost extends LitElement {
     this.img = 'https://accounts.google.com/SignOutOptions?hl=es&continue=https://www.google.com%3Fhl%3Des';
     this.hour = 0;
     this.title = '';
-    this.response = [];
+    this.post = [];
     this.generateGet = new GenerateGEt();
-  }
-
-  firstUpdated() {
-    this.getApiData()
   }
 
   render() {
@@ -44,26 +40,17 @@ export class MyPost extends LitElement {
   }
 
   //componente para tener multiples post
-
-  getApiData() {
-    this.generateGet.getDataApi()
-    this.generateGet.addEventListener('my-get', (data) => {
-      this.response = data.detail.data;
-    })
-  }
-
   getHeader(title, img, hour) {
     return html`
-      ${title && img && hour ? html`
-        <page-posts titulo="${title}" image="${this.img}" hour="${hour}"></page-posts>
-      ` : html``}
-    `;
+      ${title && img && hour ? html` <page-posts titulo=${title} image=${this.img} hour=${hour}></page-posts>` : html``}
+  `;
   }
 
   dataTemplate() {
+    console.log(this.post);
     return html`
-      ${this.response.map(item => html`
-        <page-posts titulo="${item.titulo}" image="${this.img}" hour="${item.hour}"></page-posts>
+      ${this.post.map(item => html`
+        <page-posts .titulo="${item.titulo}" .image="${item.img}" .hour="${item.hour}"></page-posts>
       `)}
     `
   }
