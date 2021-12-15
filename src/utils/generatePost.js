@@ -1,4 +1,5 @@
 import { LitElement } from 'lit-element';
+import { CUstomEVents } from './CustomEvents';
 
 export class GeneratePOst extends LitElement {
 
@@ -12,9 +13,13 @@ export class GeneratePOst extends LitElement {
   constructor() {
     super();
     this.url = 'http://localhost:3000/posts'
+    this.customEvents = new CUstomEVents();
   }
 
-  //Trae la data de la petición y la propaga por el CustomEvent
+  /**Trae la data de la petición y la propaga por el CustomEvent
+   * 1.-si la data no trae nada, se crea un arreglo vacio
+   * 2.-se propaga el evento por CustomEvents
+  */
   _sendData(data) {
     try {
       this.dispatchEvent(new CustomEvent('my-post', {
@@ -29,15 +34,18 @@ export class GeneratePOst extends LitElement {
     }
   }
 
-  // peticion que espera un objeto con un titulo, hour, img, id
-  postData(titulo, hour, img, id) {
+  /* peticion que retorna un objeto
+    formato: {title: '', hours: {hour: "" minutes: ""}, images: '', id: 'Se autogenera con el date()'}
+    2-se parsea la respuesta a json y se devuelve a la función _sendData
+  */
+  postData(title, hours, images, id) {
     try {
       fetch(this.url, {
         method: 'POST',
         body: JSON.stringify({
-          titulo,
-          hour,
-          img,
+          title,
+          hours,
+          images,
           id
         }),
         headers: {
@@ -52,14 +60,10 @@ export class GeneratePOst extends LitElement {
         this._sendData(data)
       })
       .catch((error) => {
-        this.dispatchEvent(new CustomEvent('error-promise', {
-          detail: {error}
-        }))
+        this.customEvents.CustomError('error-promise', error)
       })
     } catch (error) {
-      this.dispatchEvent(new CustomEvent('error-catch', {
-      detail: {error}
-    }))
+      this.customEvents.CustomError('error-catch', error)
   }
   }
 }

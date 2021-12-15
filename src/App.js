@@ -54,7 +54,6 @@ export class App extends LitElement {
     this.generateGet.getDataApi()
     this.generateGet.addEventListener('my-get', (data) => {
 			this.post = data.detail.data;
-			console.log(this.post);
     })
   }
 }

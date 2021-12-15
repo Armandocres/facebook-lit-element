@@ -11,8 +11,8 @@ const styles = css`
 		color: #3B5998;
 	}
 
-.item1 { grid-area: categorias;}
-.item2 { grid-area: post; }
+.item1 { grid-area: categorias; width: 160px;}
+.item2 { grid-area: post; width: 95%;}
 
 	.Container {
   	width: 100%;

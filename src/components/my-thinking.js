@@ -10,9 +10,10 @@ export class MyThinking extends LitElement {
     return {
       img: {type: String},
       quien: { type: String },
-      titulo: { type: String },
+      title: { type: String },
       response:{type: Object},
-      proposito: {type: String}
+      proposito: {type: String},
+      hours: {typeof: Object},
     }
   }
 
@@ -24,19 +25,23 @@ export class MyThinking extends LitElement {
 
   constructor() {
     super();
-    this.img = 'https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295429__340.png';
+    this.img = '';
     this.quien = '';
-    this.titulo = '';
-    this.response = {};
+    this.title = '';
     this.proposito = '';
+    this.response = {};
+    this.hours = {};
     this.postPosts = new GeneratePOst();
+    this.hoy = new Date();
+    this.hours.hour = this.hoy.getHours();
+    this.hours.minutes = this.hoy.getMinutes();
   }
 
   render() {
     return html`
     <div class='ContainerThink'>
-        ${this.getIMage()}
-        ${this.getForm(this.quien)}
+        <img .src='${this.img}' alt='imagen' class='ContainerThink__img'/>
+        ${this.getForm(this.quien, this.proposito)}
     </div>
     <div class="ContainerPost">
       ${this.getPosts()}
@@ -44,19 +49,13 @@ export class MyThinking extends LitElement {
     `;
   }
 
-  getIMage() {
-    return html`
-      <img .src='${this.img}' alt='imagen' class='ContainerThink__img'/>
-    `
-  }
-
-  getForm(quien) {
+  getForm(quien, proposito) {
     return html`
       ${quien ? html`
       <form @submit=${this.postData}>
         <label>
         <input
-          placeholder="¿${this.proposito}, ${this.quien}?"
+          placeholder="¿${proposito}, ${quien}?"
           id="think"
           class="ContainerThink--input"
         >
@@ -68,20 +67,24 @@ export class MyThinking extends LitElement {
 
   postData(e) {
     e.preventDefault()
-    let hoy = new Date();
-    this.titulo = e.target['think'].value;
-    let hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
-    this.postPosts.postData(this.titulo, hora, this.img, hoy)
+    this.title = e.target['think'].value;
+    this.postPosts.postData(this.title, this.hours, this.img, this.hoy)
     this.postPosts.addEventListener('my-post', (data) => {
       this.response = data.detail.data;
     })
+    e.target['think'].value = ''
   }
 
   getPosts() {
     return html`
-      ${this.response ? html`
-        <my-post title="${this.response.titulo}" hour="${this.response.hour}" img="${this.img}" ></my-post>
-      ` : html``}
+      ${Object.entries(this.response).length === 0 ? html`` : html`
+        <page-posts
+          .title="${this.response.title}"
+          .image="${this.img}"
+          .hour="${this.hours.hour}"
+          .minutes="${this.hours.minutes}">
+        </page-posts>
+      `}
     `
   }
 }

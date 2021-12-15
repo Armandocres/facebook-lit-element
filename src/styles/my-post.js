@@ -9,6 +9,8 @@ const styles = css`
     background-color: #000000;
     color: white;
     margin-left: 85px;
+    border: 1px solid white;
+    padding: 15px;
   }
 
   .ContainerPost__img {

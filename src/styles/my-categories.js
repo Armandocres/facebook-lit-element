@@ -29,6 +29,11 @@ const styles = css`
     border-radius: 10px;
     border: none;
   }
+
+  .ContainerCategories:active {
+    color: red;
+    background-color: #715752;
+  }
 `;
 
 export {styles};
