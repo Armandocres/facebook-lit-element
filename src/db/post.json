@@ -23,15 +23,6 @@
         "hour": "4",
         "minutes": "12"
       }
-    },
-    {
-      "title": "hola bb",
-      "hours": {
-        "hour": 15,
-        "minutes": 35
-      },
-      "images": "./src/img/perfil.png",
-      "id": "2021-12-15T21:35:53.522Z"
     }
   ]
 }
