@@ -6,12 +6,7 @@ import "../page/page-posts";
 export class MyPost extends LitElement {
 	static get properties() {
 		return {
-			title: { type: String },
-			img: { type: String },
-			hour: { typeof: Number },
 			post: { type: Array },
-			hour: { typeof: Number },
-			minutes: { typeof: Number },
 		};
 	}
 
@@ -21,12 +16,7 @@ export class MyPost extends LitElement {
 
 	constructor() {
 		super();
-		this.img = "";
-		this.hour = 0;
-		this.title = "";
 		this.post = [];
-		this.hour = 0;
-		this.minutes = 0;
 	}
 
 	render() {

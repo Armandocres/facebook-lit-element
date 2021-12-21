@@ -16,7 +16,6 @@ export class PagePosts extends LitElement {
 	constructor() {
 		super();
 		this.image = "";
-		this.hour = 0;
 		this.title = "";
 		this.hour = 0;
 		this.minutes = 0;

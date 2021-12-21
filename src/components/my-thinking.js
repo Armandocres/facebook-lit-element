@@ -12,7 +12,7 @@ export class MyThinking extends LitElement {
 			title: { type: String },
 			response: { type: Object },
 			proposito: { type: String },
-			hours: { typeof: Object },
+			hours: { type: Object },
 		};
 	}
 

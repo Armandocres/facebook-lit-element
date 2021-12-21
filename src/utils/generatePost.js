@@ -55,6 +55,7 @@ export class GeneratePOst extends LitElement {
 				},
 			})
 				.then((response) => {
+					//parsear la data
 					return response.json();
 				})
 				//manda la data a sendData
