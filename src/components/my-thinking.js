@@ -88,4 +88,4 @@ export class MyThinking extends LitElement {
 		`;
 	}
 }
-customElements.define("my-thinking", MyThinking);
+customElements.define('my-thinking', MyThinking);

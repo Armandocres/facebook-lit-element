@@ -24,6 +24,7 @@ export class MyPost extends LitElement {
 	}
 
 	dataTemplate() {
+		console.log(this.post);
 		return html`
 			${this.post.map(
 				(item) => html`

@@ -1,10 +1,12 @@
 import { LitElement } from "lit-element";
 
 export class CUstomEVents extends LitElement {
-	CustomError(data, error) {
+
+	CustomError(error) {
+		this.done = true
 		this.dispatchEvent(
 			new CustomEvent(error, {
-				detail: { data },
+				detail: this.done,
 			})
 		);
 	}
