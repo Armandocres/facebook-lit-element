@@ -1,7 +1,7 @@
-import { css } from 'lit-element';
+import { css } from "lit-element";
 
 const styles = css`
-  *{
+  * {
     margin: 0px;
     padding: 0px;
   }
@@ -29,7 +29,6 @@ const styles = css`
   .ContainerThink__img {
     width: 37px;
   }
-
 `;
 
-export {styles}
+export { styles };

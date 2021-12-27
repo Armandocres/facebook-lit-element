@@ -1,7 +1,7 @@
-import { css } from 'lit-element';
+import { css } from "lit-element";
 
 const styles = css`
-  *{
+  * {
     margin: 0px;
     padding: 0px;
   }
@@ -36,4 +36,4 @@ const styles = css`
   }
 `;
 
-export {styles};
+export { styles };

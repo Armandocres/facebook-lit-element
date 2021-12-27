@@ -3,5 +3,5 @@ import "./components/my-thinking";
 import "./components/my-post";
 import "./page/page-posts";
 import "./components/list-categories";
-import './utils/CustomEvents';
+import "./utils/CustomEvents";
 import "./App";

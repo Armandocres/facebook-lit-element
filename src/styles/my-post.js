@@ -1,4 +1,4 @@
-import { css } from 'lit-element';
+import { css } from "lit-element";
 
 const styles = css`
   .ContainerPost {
@@ -18,4 +18,4 @@ const styles = css`
   }
 `;
 
-export {styles}
+export { styles };
