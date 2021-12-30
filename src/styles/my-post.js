@@ -16,6 +16,19 @@ const styles = css`
   .ContainerPost__img {
     width: 40px;
   }
+
+  .ContainerPost__hours {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .icon-trash {
+    color: red;
+    background-color: #000000;
+    border: none;
+  }
 `;
 
 export { styles };

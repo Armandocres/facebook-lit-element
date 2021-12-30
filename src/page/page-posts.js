@@ -27,16 +27,25 @@ export class PagePosts extends LitElement {
 
   render() {
     return html`
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined"
+      />
       <div class="ContainerPost">
-        <img
-          src="${this.image}"
-          alt="imagen de perfil"
-          class="ContainerPost__img"
-        />
+        <figure>
+          <img
+            src="${this.image}"
+            alt="imagen de perfil"
+            class="ContainerPost__img"
+          />
+        </figure>
         <div>
           <p>${this.title}</p>
-          <span>${this.hour} : </span>
-          <span>${this.minutes} h</span>
+          <div class="ContainerPost__hours">
+            <span>${this.hour} : </span>
+            <span>${this.minutes} h</span>
+            <button class="material-icons-outlined icon-trash">clear</button>
+          </div>
         </div>
       </div>
     `;
